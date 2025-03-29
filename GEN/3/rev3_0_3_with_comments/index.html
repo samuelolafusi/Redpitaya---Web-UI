@@ -1,0 +1,193 @@
+<!DOCTYPE html> <!-- Declare the document type as HTML5 -->
+<html lang="en"> <!-- Start the HTML document and set the language to English -->
+
+<head> <!-- Begin the head section for metadata and resources -->
+    <!-- Define the character encoding and content type for the page -->
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"></meta>
+    <!-- Set the title of the webpage shown in the browser tab -->
+    <title>WebUI Controlled Function Gen</title>
+    <!-- Link to an external CSS file for styling -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Include the jQuery library for JavaScript functionality -->
+    <script src="js/jquery-2.1.3.min.js"></script>
+    <!-- Include the Flot library for plotting graphs -->
+    <script src="js/jquery.flot.js"></script>
+    <!-- Include the Pako library for decompressing WebSocket data -->
+    <script src="js/pako.js"></script>
+    <!-- Include the custom JavaScript file for app logic -->
+    <script src="js/app.js"></script>
+
+    <!-- Inline styles for custom input appearances -->
+    <style>
+        /* Set the accent color for range inputs (e.g., thumb color) */
+        .accent {
+            accent-color: #280244; /* Dark purple accent */
+        }
+
+        /* Style the track of range inputs for Webkit browsers (Chrome, Safari) */
+        input[type="range"]::-webkit-slider-runnable-track {
+            background: #ab50f0; /* Light purple track */
+            border-radius: 20px; /* Rounded track */
+        }
+
+        /* Style the track of range inputs for Mozilla Firefox */
+        input[type="range"]::-moz-range-track {
+            background: #ab50f0; /* Light purple track */
+            border-radius: 20px; /* Rounded track */
+        }
+        
+        /* Set a fixed width for all input elements */
+        input {
+            width: 150px; /* Fixed width for sliders */
+        }
+    </style>
+</head> <!-- End of the head section -->
+
+<body> <!-- Begin the body section where visible content goes -->
+    <!-- Create a container div for all page content -->
+    <div id='container'>
+        <!-- Display a message indicating connection status -->
+        <div id='hello_message'>trying to connect...</div><br>
+
+        <!-- Header section with title -->
+        <header>
+            <!-- Main heading for the function generator -->
+            <h1>Function Generator - V3.0.3</h1>
+            <!-- Header line is moved outside header in this version -->
+            <!-- <div class="header-line"></div> -->
+        </header>
+
+        <!-- Placeholder div where the signal graph will be drawn -->
+        <div id='placeholder'></div>
+
+        <!-- Horizontal line below the graph -->
+        <div class="header-line"></div>
+
+        <!-- Configuration section for both channels -->
+        <section id="Configuration">
+            <!-- Heading for the configuration section -->
+            <h2>Configuration</h2>
+
+            <!-- Channel 1 configuration section -->
+            <section id="Channel1">
+                <!-- Heading for Channel 1 -->
+                <h3>Channel 1</h3>
+
+                <!-- Toggle switch to enable/disable Channel 1 -->
+                <label class="led-toggle"><input type="checkbox" id="toggleChannel1"><span class="slider"></span></label>
+
+                <!-- Label for frequency slider -->
+                <div class="frequency_setup">Freq (Hz)</div>
+                <!-- Slider to set frequency (1 Hz to 50 MHz) -->
+                <input id='frequency_set' type="range" class="accent" size="2" value="0" min="1" max="50000000" step="1">
+
+                <!-- Label for amplitude slider -->
+                <div class="amplitude_setup">Amp (V)</div>
+                <!-- Slider to set amplitude (0.1 V to 1 V) -->
+                <input id='amplitude_set' type="range" class="accent" step="0.1" size="2" value="0.0" min="0.1" max="1">
+
+                <!-- Label for gain slider -->
+                <div class="gain_setup">Gain</div>
+                <!-- Slider for gain (fixed at 1 in this version) -->
+                <input id='gain_set' type="range" class="accent" size="2" value="1" min="1" max="1">
+
+                <!-- Label for waveform dropdown -->
+                <div class="waveform_setup">Waveform</div>
+                <!-- Dropdown to select waveform type -->
+                <select size="1" id="waveform_set">
+                    <option selected value="0">SINE</option>      <!-- Default: Sine wave -->
+                    <option value="1">SQUARE</option>            <!-- Square wave -->
+                    <option value="2">TRIANGLE</option>          <!-- Triangle wave -->
+                    <option value="3">SAWU</option>             <!-- Sawtooth up (ramp up) -->
+                    <option value="4">SAWD</option>             <!-- Sawtooth down (ramp down) -->
+                    <option value="5">DC</option>               <!-- DC positive -->
+                    <option value="6">DC NEG</option>           <!-- DC negative -->
+                    <option value="7">PWM</option>              <!-- Pulse-width modulation -->
+                    <option value="8">Noise</option>            <!-- Noise (arbitrary in code) -->
+                </select>
+            </section>
+
+            <!-- Vertical line separating Channel 1 and Channel 2 -->
+            <div class="config-line"></div>
+
+            <!-- Channel 2 configuration section -->
+            <section id="Channel2">
+                <!-- Heading for Channel 2 -->
+                <h3>Channel 2</h3>
+
+                <!-- Toggle switch to enable/disable Channel 2 -->
+                <label class="led-toggle1"><input type="checkbox" id="toggleChannel2"><span class="slider1"></span></label>
+
+                <!-- Label for frequency slider -->
+                <div class="frequency_setup1">Freq (Hz)</div>
+                <!-- Slider to set frequency (1 Hz to 50 MHz) -->
+                <input id='frequency_set1' type="range" class="accent" size="2" value="0" min="1" max="50000000" step="1">
+
+                <!-- Label for amplitude slider -->
+                <div class="amplitude_setup1">Amp (V)</div>
+                <!-- Slider to set amplitude (0.1 V to 1 V) -->
+                <input id='amplitude_set1' type="range" class="accent" step="0.1" size="2" value="0.0" min="0.1" max="1">
+
+                <!-- Label for gain slider -->
+                <div class="gain_setup1">Gain</div>
+                <!-- Slider for gain (fixed at 1 in this version) -->
+                <input id='gain_set1' type="range" class="accent" size="2" value="1" min="1" max="1">
+
+                <!-- Label for waveform dropdown -->
+                <div class="waveform_setup1">Waveform</div>
+                <!-- Dropdown to select waveform type -->
+                <select size="1" id="waveform_set1">
+                    <option selected value="0">SINE</option>      <!-- Default: Sine wave -->
+                    <option value="1">SQUARE</option>            <!-- Square wave -->
+                    <option value="2">TRIANGLE</option>          <!-- Triangle wave -->
+                    <option value="3">SAWU</option>             <!-- Sawtooth up (ramp up) -->
+                    <option value="4">SAWD</option>             <!-- Sawtooth down (ramp down) -->
+                    <option value="5">DC</option>               <!-- DC positive -->
+                    <option value="6">DC NEG</option>           <!-- DC negative -->
+                    <option value="7">PWM</option>              <!-- Pulse-width modulation -->
+                    <option value="8">Noise</option>            <!-- Noise (arbitrary in code) -->
+                </select>
+            </section>
+        </section>
+
+        <!-- Vertical line separating configuration and message section -->
+        <div class="message-line"></div>
+
+        <!-- Message/logs section -->
+        <section id="Message">
+            <!-- Heading for the message section -->
+            <h2>Message - Logs</h2>
+            <!-- Paragraph with sample log messages (scrollable in CSS) -->
+            <p>
+                trying to connect ...<br> 
+                connected !!! <br>
+                you have set frequency to 10Hz <br>
+                ............................<br>
+                trying to connect ...<br> 
+                connected !!! <br>
+                you have set frequency to 10Hz <br>
+                ............................<br>
+                trying to connect ...<br> 
+                connected !!! <br>
+                you have set frequency to 10Hz <br>
+                ............................<br>
+                trying to connect ...<br> 
+                connected !!! <br>
+                you have set frequency to 10Hz <br>
+                ............................<br>
+            </p>
+        </section>
+
+        <!-- Footer section with credits -->
+        <footer>
+            <!-- Horizontal line at the bottom -->
+            <div class="footer-line"></div>
+            <!-- Left-aligned footer text with author names -->
+            <div class="footer-text left">jf manceau - samuel olafusi</div>
+            <!-- Right-aligned footer text with Red Pitaya branding -->
+            <div class="footer-text right">powered by redpitaya</div>
+        </footer>
+    </div> <!-- End of the container -->
+</body> <!-- End of the body section -->
+
+</html> <!-- End of the HTML document -->

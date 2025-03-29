@@ -1,0 +1,341 @@
+/* Import custom fonts from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Agbalumo&display=swap'); /* Agbalumo font */
+@import url('https://fonts.googleapis.com/css2?family=Rakkas&display=swap');   /* Rakkas font */
+@import url('https://fonts.googleapis.com/css2?family=Jacques+Francois+Shadow&display=swap'); /* Jacques Francois Shadow font */
+
+/* Style the HTML and body to allow dynamic height and center content */
+html,
+body {
+    min-height: 100vh;       /* Minimum height is full viewport, can grow larger */
+    width: 100%;             /* Full width */
+    margin: 0;               /* Remove default margins */
+    background-color: black; /* Black background */
+    display: flex;           /* Use flexbox for centering */
+    justify-content: center; /* Center content horizontally */
+    margin: 30px 0 30px 0;   /* Add 30px top and bottom margin */
+}
+
+/* Style the main container */
+#container {
+    width: 1180px;           /* Fixed width */
+    height: 1160px;          /* Fixed height */
+    background-color: #999999; /* Gray background */
+    position: relative;      /* Allow absolute positioning of children */
+    box-sizing: border-box;  /* Include padding and border in size */
+    border-radius: 1cap;     /* Rounded corners (1cap unit) */
+    border: 2px solid #6B00BD; /* Purple border */
+    border-style: solid;     /* Solid border style */
+}
+
+/* Style the hello message */
+#hello_message {
+    font-family: 'Agbalumo'; /* Use Agbalumo font */
+    font-size: 16px;         /* Medium font size */
+    font-weight: 500;        /* Medium font weight */
+    color: #6B00BD;          /* Purple text */
+    padding-left: 15px;      /* Space on the left */
+    padding-top: 5px;        /* Space on the top */
+}
+
+/* Style the header section */
+header {
+    text-align: center;      /* Center-align text */
+    padding-bottom: 32px;    /* Space below the header */
+}
+
+/* Style the header title */
+header h1 {
+    font-family: 'Agbalumo'; /* Use Agbalumo font */
+    font-size: 60px;         /* Large font size */
+    color: #6B00BD;          /* Purple text */
+    font-weight: 500;        /* Medium font weight */
+    text-align: center;      /* Center-align text */
+    margin: -40px 0 0 0;    /* Adjust spacing: negative top to overlap, no bottom */
+}
+
+/* Style the placeholder (graph area) */
+#placeholder {
+    margin: 0 auto;          /* Center horizontally */
+    margin-bottom: 50px;     /* Space below */
+    width: 1000px;           /* Fixed width */
+    height: 500px;           /* Fixed height */
+    background-color: white; /* White background */
+    box-sizing: border-box;  /* Include border in size */
+    border-radius: 1cap;     /* Rounded corners */
+    border: 4px solid #6B00BD; /* Thicker purple border */
+    border-style: solid;     /* Solid border style */
+}
+
+/* Style the header line */
+.header-line {
+    background-color: black; /* Black color */
+    height: 5px;             /* Thin height */
+    width: 1150px;           /* Slightly less than container width */
+    margin: 0 auto;          /* Center horizontally */
+    right: 15px;             /* Align right edge (relative positioning) */
+    left: 15px;              /* Align left edge (relative positioning) */
+}
+
+/* Style the configuration section */
+#Configuration {
+    margin: -10px 0 20px 245px; /* Adjust spacing: slight overlap top, bottom, left */
+}
+
+/* Style the configuration heading */
+#Configuration h2 {
+    font-family: 'Agbalumo'; /* Use Agbalumo font */
+    font-size: 35px;         /* Medium-large font size */
+    font-weight: 400;        /* Normal font weight */
+    color: black;            /* Black text */
+    margin-left: 25px;       /* Space on the left */
+    text-decoration: underline; /* Underline text */
+}
+
+/* Style Channel 1 section */
+#Channel1 {
+    position: relative;      /* Allow relative positioning */
+    left: -200px;            /* Shift left by 200px */
+}
+
+/* Style Channel 1 heading */
+#Channel1 h3 {
+    font-family: 'Agbalumo'; /* Use Agbalumo font */
+    position: relative;      /* Allow positioning adjustments */
+    font-size: 25px;         /* Medium font size */
+    font-weight: 400;        /* Normal font weight */
+    color: black;            /* Black text */
+    left: 60px;              /* Shift right by 60px */
+    text-decoration: underline; /* Underline text */
+}
+
+/* Style the toggle switch for Channel 1 */
+.led-toggle {
+    position: relative;      /* Allow positioning adjustments */
+    display: inline-block;   /* Inline-block for layout */
+    width: 35px;             /* Fixed width */
+    height: 16px;            /* Fixed height */
+    left: 200px;             /* Shift right by 200px */
+    top: -45px;              /* Shift up by 45px */
+}
+
+/* Hide the checkbox input for Channel 1 toggle */
+.led-toggle input {
+    display: none;           /* Make the input invisible */
+}
+
+/* Style the slider background for Channel 1 toggle */
+.slider {
+    position: absolute;      /* Position within toggle */
+    cursor: pointer;         /* Show pointer cursor on hover */
+    top: 0;                  /* Align to top */
+    left: 0;                 /* Align to left */
+    right: 0;                /* Stretch to right */
+    bottom: 0;               /* Stretch to bottom */
+    background-color: black; /* Black when off */
+    border-radius: 34px;     /* Fully rounded edges */
+}
+
+/* Style the slider’s moving circle for Channel 1 */
+.slider:before {
+    position: absolute;      /* Position within slider */
+    content: "";             /* Empty content for circle */
+    height: 10px;            /* Circle height */
+    width: 12px;             /* Circle width */
+    left: 4px;               /* Start position from left */
+    bottom: 3px;             /* Position from bottom */
+    background-color: white; /* White circle */
+    transition: .4s;         /* Smooth movement animation */
+    border-radius: 50%;      /* Make it a circle */
+}
+
+/* Change slider background when Channel 1 toggle is checked */
+input:checked + .slider {
+    background-color: #6B00BD; /* Purple when on */
+}
+
+/* Move the circle when Channel 1 toggle is checked */
+input:checked + .slider:before {
+    transform: translateX(100%); /* Move circle to the right */
+}
+
+/* Style setup labels for Channel 1 (frequency, amplitude, offset, phase, waveform) */
+.frequency_setup, .amplitude_setup, .offset_setup, .phase_setup, .waveform_setup {
+    position: relative;      /* Allow positioning adjustments */
+    font-family: 'Rakkas';   /* Use Rakkas font */
+    font-size: 18px;         /* Medium font size */
+    font-weight: 200;        /* Light font weight */
+    color: #6B00BD;          /* Purple text */
+    top: -20px;              /* Shift up by 20px */
+}
+
+/* Style input sliders for Channel 1 */
+#frequency_set, #amplitude_set, #offset_set, #phase_set {
+    position: relative;      /* Allow positioning adjustments */
+    top: -45px;              /* Shift up by 45px */
+    left: 140px;             /* Shift right by 140px */
+}
+
+/* Style waveform dropdown for Channel 1 */
+#waveform_set {
+    position: relative;      /* Allow positioning adjustments */
+    top: -45px;              /* Shift up by 45px */
+    left: 140px;             /* Shift right by 140px */
+}
+
+/* Style the vertical configuration line */
+.config-line {
+    background-color: black; /* Black color */
+    width: 5px;              /* Thin width */
+    height: 310px;           /* Fixed height */
+    margin: -320px 0 0 140px; /* Position: overlap top, left */
+}
+
+/* Style Channel 2 section */
+#Channel2 {
+    margin: -305px 0 0 190px; /* Position: overlap top, left */
+}
+
+/* Style Channel 2 heading */
+#Channel2 h3 {
+    font-family: 'Agbalumo'; /* Use Agbalumo font */
+    font-size: 25px;         /* Medium font size */
+    font-weight: 400;        /* Normal font weight */
+    color: black;            /* Black text */
+    margin: 0 0 25px 50px;   /* Spacing: bottom and left */
+    text-decoration: underline; /* Underline text */
+}
+
+/* Style the toggle switch for Channel 2 */
+.led-toggle1 {
+    position: relative;      /* Allow positioning adjustments */
+    display: inline-block;   /* Inline-block for layout */
+    width: 35px;             /* Fixed width */
+    height: 16px;            /* Fixed height */
+    left: 190px;             /* Shift right by 190px */
+    top: -45px;              /* Shift up by 45px */
+}
+
+/* Hide the checkbox input for Channel 2 toggle */
+.led-toggle1 input {
+    display: none;           /* Make the input invisible */
+}
+
+/* Style the slider background for Channel 2 toggle */
+.slider1 {
+    position: absolute;      /* Position within toggle */
+    cursor: pointer;         /* Show pointer cursor on hover */
+    top: 0;                  /* Align to top */
+    left: 0;                 /* Align to left */
+    right: 0;                /* Stretch to right */
+    bottom: 0;               /* Stretch to bottom */
+    background-color: black; /* Black when off */
+    border-radius: 34px;     /* Fully rounded edges */
+}
+
+/* Style the slider’s moving circle for Channel 2 */
+.slider1:before {
+    position: absolute;      /* Position within slider */
+    content: "";             /* Empty content for circle */
+    height: 10px;            /* Circle height */
+    width: 12px;             /* Circle width */
+    left: 4px;               /* Start position from left */
+    bottom: 3px;             /* Position from bottom */
+    background-color: white; /* White circle */
+    transition: .4s;         /* Smooth movement animation */
+    border-radius: 50%;      /* Make it a circle */
+}
+
+/* Change slider background when Channel 2 toggle is checked */
+input:checked + .slider1 {
+    background-color: #6B00BD; /* Purple when on */
+}
+
+/* Move the circle when Channel 2 toggle is checked */
+input:checked + .slider1:before {
+    transform: translateX(100%); /* Move circle to the right */
+}
+
+/* Style setup labels for Channel 2 (frequency, amplitude, offset, phase, waveform) */
+.frequency_setup1, .amplitude_setup1, .offset_setup1, .phase_setup1, .waveform_setup1 {
+    position: relative;      /* Allow positioning adjustments */
+    font-family: 'Rakkas';   /* Use Rakkas font */
+    font-size: 18px;         /* Medium font size */
+    font-weight: 200;        /* Light font weight */
+    color: #6B00BD;          /* Purple text */
+    top: -20px;              /* Shift up by 20px */
+}
+
+/* Style input sliders for Channel 2 */
+#frequency_set1, #amplitude_set1, #offset_set1, #phase_set1 {
+    position: relative;      /* Allow positioning adjustments */
+    top: -45px;              /* Shift up by 45px */
+    left: 140px;             /* Shift right by 140px */
+}
+
+/* Style waveform dropdown for Channel 2 */
+#waveform_set1 {
+    position: relative;      /* Allow positioning adjustments */
+    top: -45px;              /* Shift up by 45px */
+    left: 140px;             /* Shift right by 140px */
+}
+
+/* Style the vertical message line */
+.message-line {
+    background-color: black; /* Black color */
+    width: 5px;              /* Thin width */
+    height: 432px;           /* Fixed height */
+    margin: -445px 0 0 780px; /* Position: overlap top, left */
+}
+
+/* Style the message section */
+#Message {
+    margin: -435px 0 0 850px; /* Position: overlap top, left */
+}
+
+/* Style the message heading */
+#Message h2 {
+    font-family: 'Agbalumo'; /* Use Agbalumo font */
+    font-size: 35px;         /* Medium-large font size */
+    font-weight: 400;        /* Normal font weight */
+    color: black;            /* Black text */
+    text-decoration: underline; /* Underline text */
+}
+
+/* Style the message paragraph */
+#Message p {
+    font-family: 'Rakkas';   /* Use Rakkas font */
+    font-size: 15px;         /* Small font size */
+    font-weight: 300;        /* Light font weight */
+    color: #6B00BD;          /* Purple text */
+    margin: 10px 15px 0 -40px; /* Adjust spacing: top, right, negative left */
+    width: 340px;            /* Fixed width */
+    height: 300px;           /* Fixed height */
+    text-align: justify;     /* Justify text */
+    overflow-y: scroll;      /* Enable vertical scrolling if content overflows */
+    overflow-y: scroll auto visible; /* Ensure scroll behavior (corrected syntax) */
+}
+
+/* Style the footer */
+footer {
+    justify-content: space-between; /* Space items evenly */
+    margin-top: 25px;        /* Space above */
+    display: flex;           /* Use flexbox for layout */
+}
+
+/* Style the footer line */
+.footer-line {
+    background-color: black; /* Black color */
+    margin: 0 15px 0 15px;   /* Space on left and right */
+    height: 5px;             /* Thin height */
+    width: 1150px;           /* Slightly less than container width */
+    position: absolute;      /* Position absolutely within container */
+}
+
+/* Style the footer text */
+.footer-text {
+    font-family: 'Agbalumo'; /* Use Agbalumo font */
+    font-weight: 200;        /* Light font weight */
+    font-size: 15px;         /* Small font size */
+    color: #6B00BD;          /* Purple text */
+    margin: 10px 15px 0 15px; /* Adjust spacing: top, right, left */
+}
