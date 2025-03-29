@@ -1,0 +1,233 @@
+/* Import custom fonts from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Rakkas&display=swap'); /* Rakkas font */
+@import url('https://fonts.googleapis.com/css2?family=Jacques+Francois+Shadow&display=swap'); /* Jacques Francois Shadow font */
+
+/* Style the HTML and body to center content and fill the screen */
+html,
+body {
+    display: flex;           /* Use flexbox for centering */
+    justify-content: center; /* Center horizontally */
+    align-items: center;     /* Center vertically */
+    height: 100vh;           /* Full viewport height */
+    width: 100%;             /* Full width */
+    margin: 0;               /* Remove default margins */
+    background-color: white; /* White background */
+}
+
+/* Style the main container */
+#container {
+    width: 1180px;           /* Fixed width */
+    height: 443px;           /* Fixed height */
+    background-color: black; /* Black background */
+    position: relative;      /* Allow absolute positioning of children */
+    padding: 1px;            /* Small padding inside */
+    box-sizing: border-box;  /* Include padding in width/height calculations */
+}
+
+/* Style the hello message */
+#hello_message {
+    font-family: 'Rakkas';   /* Use Rakkas font */
+    font-size: 10px;         /* Small font size */
+    font-weight: 500;        /* Medium font weight */
+    color: white;            /* White text */
+    padding-left: 10px;      /* Space on the left */
+    padding-top: 10px;       /* Space on the top */
+}
+
+/* Style the header section */
+header {
+    text-align: center;      /* Center-align text */
+    padding-bottom: 73px;    /* Space below the header */
+}
+
+/* Style the header title */
+header h1 {
+    font-family: 'Jacques Francois Shadow'; /* Use Jacques Francois Shadow font */
+    font-size: 40px;         /* Large font size */
+    color: white;            /* White text */
+    font-weight: 500;        /* Medium font weight */
+    text-align: center;      /* Center-align text */
+    margin: -30px 0 10px 0;  /* Adjust spacing: negative top, small bottom */
+}
+
+/* Style for both yellow and green lines */
+.yellow-line, .green-line {
+    height: 5px;             /* Thin height */
+    width: 1178px;           /* Almost full width of container */
+    margin: 0 auto;          /* Center horizontally */
+}
+
+/* Style the yellow line (top line) */
+.yellow-line {
+    background-color: white; /* White color */
+}
+
+/* Style the green line (bottom line) */
+.green-line {
+    background-color: white; /* White color */
+    position: absolute;      /* Position it absolutely within container */
+    bottom: 25px;            /* 25px from the bottom */
+}
+
+/* Style the vertical white line */
+.white-line {
+    background-color: white; /* White color */
+    width: 5px;              /* Thin width */
+    height: 330px;           /* Tall height */
+    position: absolute;      /* Position it absolutely within container */
+    top: 78px;               /* 78px from the top */
+    left: 272px;             /* 272px from the left */
+}
+
+/* Style the about section */
+#about {
+    position: absolute;      /* Position it absolutely within container */
+    top: 123px;              /* 123px from the top */
+    left: 85px;              /* 85px from the left */
+}
+
+/* Style the about section heading */
+#about h2 {
+    font-family: 'Rakkas';   /* Use Rakkas font */
+    font-size: 40px;         /* Large font size */
+    font-weight: 400;        /* Normal font weight */
+    color: white;            /* White text */
+    margin: 0;               /* Remove default margins */
+}
+
+/* Style the about section paragraph */
+#about p {
+    font-family: 'Rakkas';   /* Use Rakkas font */
+    font-size: 19px;         /* Medium font size */
+    color: white;            /* White text */
+    margin: 10px 15px 0 -70px; /* Adjust spacing: top, right, negative left */
+    width: 242px;            /* Fixed width */
+    height: 73px;            /* Fixed height */
+    text-align: justify;     /* Justify text */
+}
+
+/* Style the LED controls section */
+#led-controls {
+    position: absolute;      /* Position it absolutely within container */
+    top: 120px;              /* 120px from the top */
+    left: 300px;             /* 300px from the left */
+}
+
+/* Style the grid layout for LED controls */
+.led-grid {
+    display: grid;           /* Use CSS grid */
+    grid-template-columns: repeat(4, 1fr); /* 4 equal-width columns */
+    gap: 30px;               /* Space between grid items */
+    padding-top: 10px;       /* Space above the grid */
+}
+
+/* Style each LED control box */
+.led-control {
+    width: 170px;            /* Fixed width */
+    height: 100px;           /* Fixed height */
+    background-color: white; /* White background */
+    border-radius: 10px;     /* Rounded corners */
+    text-align: center;      /* Center-align text */
+    position: relative;      /* Allow absolute positioning of children */
+}
+
+/* Style the LED control heading */
+.led-control h3 {
+    font-family: 'Rakkas';   /* Use Rakkas font */
+    font-size: 40px;         /* Large font size */
+    color: black;            /* Black text */
+    margin: 0 0 0 -40px;     /* Adjust spacing: negative left for alignment */
+}
+
+/* Style the LED control paragraph */
+.led-control p {
+    font-family: 'Rakkas';   /* Use Rakkas font */
+    font-size: 20px;         /* Medium font size */
+    color: black;            /* Black text */
+    margin: -5px 0 0 -40px;  /* Adjust spacing: negative top and left */
+}
+
+/* Style the toggle switch container */
+.led-toggle {
+    position: relative;      /* Allow positioning of child elements */
+    display: inline-block;   /* Inline-block for layout */
+    width: 35px;             /* Fixed width */
+    height: 16px;            /* Fixed height */
+    margin: -23px -70px 23px 0; /* Adjust spacing: negative top, negative right */
+}
+
+/* Hide the actual checkbox input */
+.led-toggle input {
+    display: none;           /* Make the input invisible */
+}
+
+/* Style the toggle slider background */
+.slider {
+    position: absolute;      /* Position it within the toggle */
+    cursor: pointer;         /* Show pointer cursor on hover */
+    top: 0;                  /* Align to top */
+    left: 0;                 /* Align to left */
+    right: 0;                /* Stretch to right */
+    bottom: 0;               /* Stretch to bottom */
+    background-color: #0f0e0e4d; /* Semi-transparent gray when off */
+    /*transition: .4s;*/     /* Uncomment for smooth color transition */
+    border-radius: 34px;     /* Fully rounded edges */
+}
+
+/* Style the toggle slider’s moving circle */
+.slider:before {
+    position: absolute;      /* Position within the slider */
+    content: "";             /* Empty content for the circle */
+    height: 10px;            /* Circle height */
+    width: 12px;             /* Circle width */
+    left: 4px;               /* Start position from left */
+    bottom: 3px;             /* Position from bottom */
+    background-color: white; /* White circle */
+    transition: .4s;         /* Smooth movement animation */
+    border-radius: 50%;      /* Make it a circle */
+}
+
+/* Change slider background when checked */
+input:checked + .slider {
+    background-color: #2196F3; /* Blue when on */
+}
+
+/* Move the circle when checked */
+input:checked + .slider:before {
+    transform: translateX(100%); /* Move circle to the right */
+}
+
+/* Style the light icon next to the toggle */
+.light-icon {
+    position: absolute;      /* Position within the LED control */
+    width: 35px;             /* Fixed width */
+    height: 35px;            /* Fixed height */
+    font-size: 30px;         /* Large font size for icon */
+    margin: -75px 0 0 65px;  /* Adjust positioning: negative top, left */
+}
+
+/* Style the footer */
+footer {
+    position: absolute;      /* Position at the bottom of container */
+    bottom: 10px;            /* 10px from the bottom */
+    width: 100%;             /* Full width */
+    display: flex;           /* Use flexbox for layout */
+    justify-content: space-between; /* Space text on both ends */
+}
+
+/* Style footer text */
+.footer-text {
+    font-family: 'Rakkas';   /* Use Rakkas font */
+    font-size: 15px;         /* Small font size */
+    color: white;            /* White text */
+}
+
+/* Style left-aligned footer text */
+.footer-text.left {
+    margin-left: 10px;       /* Space from the left edge */
+}
+
+/* Style right-aligned footer text */
+.footer-text.right {
+    margin-right: 10px;      /* Space from the right edge */
+}
