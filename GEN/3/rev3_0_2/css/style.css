@@ -1,0 +1,334 @@
+@import url('https://fonts.googleapis.com/css2?family=Agbalumo&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rakkas&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jacques+Francois+Shadow&display=swap');
+html,
+body {
+    /* Ensures the page can grow dynamically */
+    min-height: 100vh;
+    width: 100%;
+    margin: 0;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    margin: 30px 0 30px 0;
+}
+
+#container {
+    width: 1180px;
+    height: 1160px;
+    background-color: #999999;
+    position: relative;
+    box-sizing: border-box;
+    border-radius: 1cap;
+    border: 2px solid #6B00BD;
+    border-style: solid;
+}
+
+
+
+#hello_message {
+    font-family: 'Agbalumo';
+    font-size: 16px;
+    font-weight: 500;
+    color: #6B00BD;
+    padding-left: 15px;
+    padding-top: 5px;
+}
+
+header {
+    text-align: center;
+    padding-bottom: 32px;
+}
+
+header h1 {
+    font-family: 'Agbalumo';
+    font-size: 60px;
+    color: #6B00BD;
+    font-weight: 500;
+    text-align: center;
+    margin: -40px 0 0 0;
+}
+
+#placeholder {
+    margin: 0 auto;
+    margin-bottom: 50px;
+    width: 1000px;
+    height: 500px;
+    background-color: white;
+    box-sizing: border-box;
+    border-radius: 1cap;
+    border: 4px solid #6B00BD;
+    border-style: solid;
+}
+
+.header-line {
+    background-color: black;
+    height: 5px;
+    width: 1150px;
+    margin: 0 auto;
+    right: 15px;
+    left: 15px;
+}
+
+#Configuration {
+    /*position: absolute;
+    top: 650px;*/
+    /*left: 500px;*/
+    margin: -10px 0 20px 245px;
+}
+
+#Configuration h2 {
+    font-family: 'Agbalumo';
+    font-size: 35px;
+    font-weight: 400;
+    color: black;
+    margin-left: 25px;
+    text-decoration: underline;
+}
+
+
+
+#Channel1 {
+    /*margin: 0 0 0 -200px;*/
+    position: relative;
+    left: -200px;
+    /*top: 20px;*/
+}
+
+#Channel1 h3 {
+    font-family: 'Agbalumo';
+    position: relative;
+    font-size: 25px;
+    font-weight: 400;
+    color: black;
+    left: 60px;
+    text-decoration: underline;
+}
+
+.led-toggle {
+    position: relative;
+    display: inline-block;
+    width: 35px;
+    height: 16px;
+    left: 200px;
+    top: -45px;
+}
+
+.led-toggle input {
+    display: none;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: black;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 10px;
+    width: 12px;
+    left: 4px;
+    bottom: 3px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #6B00BD;
+}
+
+input:checked + .slider:before {
+    transform: translateX(100%);
+}
+
+
+.frequency_setup, .amplitude_setup, .gain_setup, .waveform_setup {
+    position: relative;
+    font-family: 'Rakkas';
+    font-size: 18px;
+    font-weight: 100;
+    color: white;
+    top: -20px;
+}
+
+#frequency_set, #amplitude_set, #gain_set {
+    position: relative;
+    top: -40px;
+    left: 140px;
+}
+
+#waveform_set {
+    position: relative;
+    top: -40px;
+    left: 135px;
+}
+
+
+.config-line {
+    background-color: black;
+    width: 5px;
+    height: 310px;
+    margin: -290px 0 0 140px;
+    /*position: absolute;
+    top: 75px;
+    left: 120px;*/
+}
+
+
+#Channel2 {
+    margin: -293px 0 0 190px;
+    /*left: 170px;
+    position: relative;
+    top: -280px;*/
+}
+
+#Channel2 h3 {
+    font-family: 'Agbalumo';
+    font-size: 25px;
+    font-weight: 400;
+    color: black;
+    /*margin-left: 50px;
+    margin-top: -50px;
+    position: relative;*/
+    margin: 0 0 25px 50px;
+    text-decoration: underline;
+    /*left: 60px;
+    margin: auto;*/
+}
+
+.led-toggle1 {
+    position: relative;
+    display: inline-block;
+    width: 35px;
+    height: 16px;
+    left: 190px;
+    top: -45px;
+}
+
+.led-toggle1 input {
+    display: none;
+}
+
+.slider1 {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: black;
+    border-radius: 34px;
+}
+
+.slider1:before {
+    position: absolute;
+    content: "";
+    height: 10px;
+    width: 12px;
+    left: 4px;
+    bottom: 3px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider1 {
+    background-color: #6B00BD;
+}
+
+input:checked + .slider1:before {
+    transform: translateX(100%);
+}
+
+.frequency_setup1, .amplitude_setup1, .gain_setup1, .waveform_setup1 {
+    position: relative;
+    font-family: 'Rakkas';
+    font-size: 18px;
+    font-weight: 100;
+    color: white;
+    top: -20px;
+}
+
+#frequency_set1, #amplitude_set1, #gain_set1 {
+    position: relative;
+    top: -40px;
+    left: 140px;
+}
+
+#waveform_set1{
+    position: relative;
+    top: -40px;
+    left: 135px;
+}
+
+.message-line {
+    background-color: black;
+    width: 5px;
+    height: 432px;
+    margin: -400px 0 0 780px;
+    /*position: absolute;*/
+    /*top: 95px;
+    left: 733.25px;*/
+}
+
+#Message {
+    margin: -435px 0 0 850px;
+}
+
+#Message h2 {
+    font-family: 'Agbalumo';
+    font-size: 35px;
+    font-weight: 400;
+    color: black;
+    text-decoration: underline;
+}
+
+
+#Message p {
+    font-family: 'Rakkas';
+    font-size: 15px;
+    font-weight: 300;
+    color: black;
+    margin: 10px 15px 0 -40px;
+    width: 340px;
+    height: 300px;
+    text-align: justify;
+    overflow-y: scroll;
+    overflow-y:scroll auto visible;
+}
+
+
+
+footer {
+    justify-content: space-between;
+    margin-top: 25px;
+    display: flex;
+    /*bottom: 10px;*/
+    /*width: 100%;*/
+}
+
+.footer-line {
+    background-color: black;
+    /*margin-right: 15px;
+    margin-left: 15px;*/
+    margin: 0 15px 0 15px;
+    height: 5px;
+    width: 1150px;
+    position: absolute;
+}
+
+.footer-text {
+    font-family: 'Agbalumo';
+    font-weight: 200;
+    font-size: 15px;
+    color: #6B00BD;
+    margin: 10px 15px 0 15px;
+}

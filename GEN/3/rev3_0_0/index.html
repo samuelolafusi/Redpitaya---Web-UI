@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"></meta>
+    <title>WebUI Controlled Function Gen</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/jquery-2.1.3.min.js"></script>
+    <script src="js/jquery.flot.js"></script>
+    <script src="js/pako.js"></script>
+    <script src="js/app.js"></script>
+
+    <style>
+        .accent {
+            accent-color: #280244;
+        }
+
+        input[type="range"]::-webkit-slider-runnable-track {
+            background: #ab50f0;
+            border-radius: 20px;
+        }
+
+        input[type="range"]::-moz-range-track {
+            background: #ab50f0;
+            border-radius: 20px;
+        }
+        
+        input {
+            width: 150px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+   	<div id='container'>
+
+   		<div id='hello_message'>trying to connect...</div><br>
+
+        <header>
+            <h1>Sig Gen (CH 1 only) - V3.0.0</h1>
+            
+            <!--<div class="header-line"></div>-->
+        </header>
+
+        <div id='placeholder'></div>
+
+        <div class="header-line"></div>
+        
+        
+
+        <section id="Configuration">
+            <h2>Configuration</h2>
+
+            <section id="Channel1">
+
+                <h3>Channel 1</h3>
+
+                <label class="led-toggle"><input type="checkbox" id="toggleChannel1"><span class="slider"></span></label>
+                
+                <!--
+                <label class="led-toggle"><input type="checkbox"><span class="slider"></span></label>
+                -->
+
+                <div class="frequency_setup">Freq (Hz)</div>
+                <input id='frequency_set' type="range" class="accent" size="2" value="1" min = "1" max = "20">
+
+                <div class="amplitude_setup">Amp (V)</div>
+                <input id='amplitude_set' type="range" class="accent" step="0.01" size="2" value="0.5" min = "0" max = "0.5">
+
+                <div class="gain_setup">Gain</div>
+                <input id='gain_set' type="range" class="accent" size="2" value="1" min = "1" max = "5">
+
+                <div class="waveform_setup">Waveform</div>
+                <select size="1" id="waveform_set">
+                    <option selected value="0">Sine</option>
+                    <option value="1">Sawtooth</option>
+                    <option value="2">Square</option>
+                </select>
+                
+            </section>
+
+            <div class="config-line"></div>
+
+            <section id="Channel2">
+
+                <h3>Channel 2</h3>
+                <!-- For Channel 2 -->
+                <label class="led-toggle1"><input type="checkbox" id="toggleChannel2"><span class="slider1"></span></label>
+                
+                <!-- 
+                <label class="led-toggle1"><input type="checkbox"><span class="slider1"></span></label>
+                -->
+
+                <div class="frequency_setup1">Freq (Hz)</div>
+                <input id='frequency_set1' type="range" class="accent" size="2" value="1" min = "1" max = "20">
+
+                <div class="amplitude_setup1">Amp (V)</div>
+                <input id='amplitude_set1' type="range" class="accent" step="0.01" size="2" value="0.5" min = "0" max = "0.5">
+
+                <div class="gain_setup1">Gain</div>
+                <input id='gain_set1' type="range" class="accent" size="2" value="1" min = "1" max = "5">
+
+                <div class="waveform_setup1">Waveform</div>
+                <select size="1" id="waveform_set1">
+                    <option selected value="0">Sine</option>
+                    <option value="1">Sawtooth</option>
+                    <option value="2">Square</option>
+                </select>
+
+            </section>
+
+        </section>
+
+        <div class="message-line"></div>
+
+        <section id="Message">
+            <h2>Message - Logs</h2>
+            <p>
+                trying to connect ...<br> 
+                connected !!! <br>
+                you have set frequency to 10Hz <br>
+                ............................<br>
+                trying to connect ...<br> 
+                connected !!! <br>
+                you have set frequency to 10Hz <br>
+                ............................<br>
+                trying to connect ...<br> 
+                connected !!! <br>
+                you have set frequency to 10Hz <br>
+                ............................<br>
+                trying to connect ...<br> 
+                connected !!! <br>
+                you have set frequency to 10Hz <br>
+                ............................<br>
+            </p>
+        </section>
+
+        <footer>
+            <div class="footer-line"></div>
+            <div class="footer-text left">jf manceau - samuel olafusi</div>
+            <div class="footer-text right">powered by redpitaya</div>
+        </footer>
+
+        <!--<div id='placeholder'></div>-->
+        
+    </div>
+
+</body>
+</html>
