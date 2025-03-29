@@ -1,0 +1,45 @@
+/* Set the width and height of the HTML and body elements to take up the full screen */
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+/* Style the body: text color, allow scrolling if content overflows, and remove default margins */
+body {
+    color: #cdcccc; /* Light gray text color */
+    overflow: auto;  /* Enable scrolling when content exceeds the screen */
+    margin: 0;      /* Remove default spacing around the body */
+}
+
+/* Style the content section: fixed size, centered on the page, with a dark background and centered text */
+#content {
+    width: 500px;          /* Set width to 500 pixels */
+    height: 250px;         /* Set height to 250 pixels */
+    margin: 0 auto;        /* Center the content horizontally */
+    background-color: #333333; /* Dark gray background */
+    text-align: center;    /* Center-align the text inside */
+}
+
+/* Style the hello message: add space above and below */
+#hello_message {
+    padding-top: 20px;    /* Add 20 pixels of space at the top */
+    margin-bottom: 20px;  /* Add 20 pixels of space below */
+}
+
+/* Style the "LED off" state: red text color */
+#led_off {
+    color: #F00;  /* Red color (short for #FF0000) */
+}
+
+/* Style the "LED on" state: green text color, hidden by default */
+#led_on {
+    display: none; /* Hide this element initially */
+    color: #0F0;   /* Green color (short for #00FF00) */
+}
+
+/* Style the LED state section: add space above and padding inside */
+#led_state {
+    margin-top: 20px; /* Add 20 pixels of space above */
+    padding: 10px;    /* Add 10 pixels of padding inside on all sides */
+}
