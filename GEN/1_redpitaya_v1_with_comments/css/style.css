@@ -1,0 +1,80 @@
+/* Set the width and height of the HTML and body elements to take up the full screen */
+html,
+body {
+    width: 100%;  /* Full width */
+    height: 100%; /* Full height */
+}
+
+/* Style the body: text color, allow scrolling, and remove default margins */
+body {
+    color: #cdcccc; /* Light gray text color */
+    overflow: auto; /* Enable scrolling when content exceeds the screen */
+    margin: 0;      /* Remove default spacing around the body */
+}
+
+/* Style the content section: fixed size, centered, dark background, and centered text */
+#content {
+    width: 800px;          /* Set width to 800 pixels */
+    height: 900px;         /* Set height to 900 pixels */
+    margin: 0 auto;        /* Center the content horizontally */
+    background-color: #333333; /* Dark gray background */
+    text-align: center;    /* Center-align text inside */
+}
+
+/* Style the hello message: add space above and below */
+#hello_message {
+    padding-top: 20px;    /* Add 20 pixels of space at the top */
+    margin-bottom: 20px;  /* Add 20 pixels of space below */
+}
+
+/* Style the placeholder element: fixed size and centered */
+#placeholder {
+    width: 700px;         /* Set width to 700 pixels */
+    height: 450px;        /* Set height to 450 pixels */
+    margin: 0 auto;       /* Center the placeholder horizontally */
+}
+
+/* Style the value element: add space above */
+#value {
+    margin-top: 20px;     /* Add 20 pixels of space above */
+}
+
+/* Style the gain setup section: add space above */
+#gain_setup {
+    margin-top: 20px;     /* Add 20 pixels of space above */
+}
+
+/* Style the gain set element: add space above */
+#gain_set {
+    margin-top: 10px;     /* Add 10 pixels of space above */
+}
+
+/* Style the frequency setup section: add space above */
+#frequency_setup {
+    margin-top: 20px;     /* Add 20 pixels of space above */
+}
+
+/* Style the frequency set element: add space above */
+#frequency_set {
+    margin-top: 10px;     /* Add 10 pixels of space above */
+}
+
+/* Style the amplitude setup section: add space above */
+#amplitude_setup {
+    margin-top: 20px;     /* Add 20 pixels of space above */
+}
+
+/* Style the amplitude set element: add space above */
+#amplitude_set {
+    margin-top: 10px;     /* Add 10 pixels of space above */
+}
+
+/* Style the waveform setup section: add space above */
+#waveform_setup {
+    margin-top: 20px;     /* Add 20 pixels of space above */
+}
+
+/* Style the waveform set element: add space above */
+#waveform_set {
+    margin-top: 10px;     /* Add 10 pixels of space above */
+}
