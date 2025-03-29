@@ -1,0 +1,183 @@
+<!DOCTYPE html> <!-- Declare the document type as HTML5 -->
+<html lang="en"> <!-- Start HTML document and set language to English -->
+
+<head> <!-- Begin head section for metadata and resources -->
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"></meta> <!-- Define character encoding and content type -->
+    <title>WebUI Controlled Function Gen</title> <!-- Set webpage title -->
+    <link rel="stylesheet" href="css/style.css"> <!-- Link to external CSS file -->
+    <script src="js/jquery-2.1.3.min.js"></script> <!-- Include jQuery library -->
+    <script src="js/jquery.flot.js"></script> <!-- Include Flot library for graphs -->
+    <script src="js/pako.js"></script> <!-- Include Pako for WebSocket data decompression -->
+    <script src="js/app.js"></script> <!-- Include custom app JavaScript -->
+
+    <style> <!-- Inline styles for input customization -->
+        .accent {
+            accent-color: #280244; /* Set accent color to dark purple */
+        }
+
+        input[type="range"]::-webkit-slider-runnable-track { /* Style slider track for Webkit browsers */
+            background: #ab50f0; /* Light purple background */
+            border-radius: 20px; /* Rounded edges */
+        }
+
+        input[type="range"]::-moz-range-track { /* Style slider track for Firefox */
+            background: #ab50f0; /* Light purple background */
+            border-radius: 20px; /* Rounded edges */
+        }
+        
+        input {
+            width: 150px; /* Set fixed width for all inputs */
+        }
+    </style>
+</head> <!-- End of head section -->
+
+<body> <!-- Begin body section for visible content -->
+    <div id='container'> <!-- Main container for all content -->
+        <div id='hello_message'>trying to connect...</div><br> <!-- Show connection status -->
+
+        <header> <!-- Header section -->
+            <h1>Function Generator - V3.0.5</h1> <!-- App title with version -->
+        </header>
+
+        <div id='placeholder'></div> <!-- Placeholder for signal graph -->
+
+        <div class="gain_setup">Gain: </div> <!-- Label for gain input -->
+        <input class="setfield input-number" id='gain_set' type="number" value="0" min="0" max="5" step="1"> <!-- Number input for gain (0-5) -->
+
+        <div class="header-line"></div> <!-- Horizontal line below graph -->
+        
+        <section id="Configuration"> <!-- Configuration section for both channels -->
+            <h2>Configuration</h2> <!-- Section title -->
+
+            <section id="Channel1"> <!-- Channel 1 settings -->
+                <h3>Channel 1</h3> <!-- Channel title -->
+
+                <label class="led-toggle"><input type="checkbox" id="toggleChannel1"><span class="slider"></span></label> <!-- Toggle switch for Channel 1 -->
+
+                <div class="frequency_setup">Freq (Hz)</div> <!-- Frequency label -->
+                <input class="setfield input-number" id='frequency_set' type="number" value="0" min="0" max="50000000" step="1"> <!-- Frequency input (0-50 MHz) -->
+        
+                <div class="amplitude_setup">Amp (V)</div> <!-- Amplitude label -->
+                <input class="setfield input-number" id='amplitude_set' type="number" value="0.0" min="0.0" max="1" step="0.1"> <!-- Amplitude input (0-1 V) -->
+
+                <div class="offset_setup">Offset (V)</div> <!-- Offset label -->
+                <input class="setfield input-number" id='offset_set' type="number" value="0" min="-2" max="2" step="0.1"> <!-- Offset input (-2 to 2 V) -->
+
+                <div class="phase_setup">Phase/Deg</div> <!-- Phase label -->
+                <input class="setfield input-number" id='phase_set' type="number" value="0" min="0" max="360" step="1"> <!-- Phase input (0-360 degrees) -->
+
+                <div class="waveform_setup">Waveform</div> <!-- Waveform label -->
+                <select size="1" id="waveform_set"> <!-- Dropdown for waveform selection -->
+                    <!-- the waveforms specified here are what the redpitaya can generate based on documentations.
+                    check documentation on webpage or check scopegenpro html file in ecosystem for RedPitaya_OS_2.05-37 on Github for more.
+                    ensure that the value assigned to these waveforms matches what is in cpp-->
+                    <option selected value="0">SINE</option>    <!-- 0 = Sine wave -->
+                    <option value="1">SQUARE</option>          <!-- 1 = Square wave -->
+                    <option value="2">TRIANGLE</option>        <!-- 2 = Triangle wave -->
+                    <option value="3">SAWU</option>           <!-- 3 = Sawtooth up -->
+                    <option value="4">SAWD</option>           <!-- 4 = Sawtooth down -->
+                    <option value="5">DC</option>             <!-- 5 = DC positive -->
+                    <option value="6">DC NEG</option>         <!-- 6 = DC negative -->
+                    <option value="7">PWM</option>            <!-- 7 = PWM wave -->
+                    <option value="8">Noise</option>          <!-- 8 = Noise (arbitrary) -->
+                </select>
+            </section>
+
+            <div class="config-line"></div> <!-- Vertical line between channels -->
+
+            <section id="Channel2"> <!-- Channel 2 settings -->
+                <h3>Channel 2</h3> <!-- Channel title -->
+                
+                <label class="led-toggle1"><input type="checkbox" id="toggleChannel2"><span class="slider1"></span></label> <!-- Toggle switch for Channel 2 -->
+
+                <div class="frequency_setup1">Freq (Hz)</div> <!-- Frequency label -->
+                <input class="setfield input-number" id='frequency_set1' type="number" value="0" min="0" max="50000000" step="1"> <!-- Frequency input (0-50 MHz) -->
+        
+                <div class="amplitude_setup1">Amp (V)</div> <!-- Amplitude label -->
+                <input class="setfield input-number" id='amplitude_set1' type="number" value="0.0" min="0.0" max="1" step="0.1"> <!-- Amplitude input (0-1 V) -->
+
+                <div class="offset_setup1">Offset (V)</div> <!-- Offset label -->
+                <input class="setfield input-number" id='offset_set1' type="number" value="0" min="-2" max="2" step="0.1"> <!-- Offset input (-2 to 2 V) -->
+
+                <div class="phase_setup1">Phase/Deg</div> <!-- Phase label -->
+                <input class="setfield input-number" id='phase_set1' type="number" value="0" min="0" max="360" step="1"> <!-- Phase input (0-360 degrees) -->
+
+                <div class="waveform_setup1">Waveform</div> <!-- Waveform label -->
+                <select size="1" id="waveform_set1"> <!-- Dropdown for waveform selection -->
+                    <option selected value="0">SINE</option>
+                    <option value="1">SQUARE</option>
+                    <option value="2">TRIANGLE</option>
+                    <option value="3">SAWU</option>
+                    <option value="4">SAWD</option>
+                    <option value="5">DC</option>
+                    <option value="6">DC NEG</option>
+                    <option value="7">PWM</option>
+                    <option value="8">Noise</option>
+                </select>
+            </section>
+        </section>
+
+        <div class="message-line"></div> <!-- Vertical line before logs -->
+
+        <section id="Message"> <!-- Logs section -->
+            <h2>Message - Logs</h2> <!-- Logs title -->
+            
+            <!-- the plan was to fill the paragraph below dynamically from javasript 
+            to show what the user is doing, more like a logs-->
+            <p> <!-- Placeholder text for logs -->
+                trying to connect ...<br> 
+                connected !!! <br>
+                you have set frequency to 10Hz <br>
+                ............................<br>
+                trying to connect ...<br> 
+                connected !!! <br>
+                you have set frequency to 10Hz <br>
+                ............................<br>
+                trying to connect ...<br> 
+                connected !!! <br>
+                you have set frequency to 10Hz <br>
+                ............................<br>
+                trying to connect ...<br> 
+                connected !!! <br>
+                you have set frequency to 10Hz <br>
+                ............................<br>
+            </p>
+        </section>
+
+        <footer> <!-- Footer section -->
+            <div class="footer-line"></div> <!-- Horizontal line -->
+            <div class="footer-text left">jf manceau - samuel olafusi</div> <!-- Authors -->
+            <div class="footer-text right">powered by redpitaya</div> <!-- Branding -->
+        </footer>
+    </div> <!-- End of container -->
+
+    <script> <!-- Inline script to enforce input limits -->
+        // this script ensures that the user does not input anything above the stated max value of the signal properties, 
+        // inturn protecting the redpitaya
+        // Select all number inputs
+        const numberInputs = document.querySelectorAll('input[type="number"]');
+    
+        // Function to clamp the value within min and max
+        function clampValue(input) {
+            const min = parseFloat(input.getAttribute('min')) || -Infinity; // Get min value
+            const max = parseFloat(input.getAttribute('max')) || Infinity; // Get max value
+            let value = parseFloat(input.value); // Get current value
+            
+            if (isNaN(value)) { // If value isn’t a number
+                value = min; // Reset to minimum
+            } else {
+                value = Math.max(min, Math.min(max, value)); // Keep within min/max
+            }
+            
+            input.value = value; // Update input field
+        }
+    
+        // Add event listener for input changes
+        numberInputs.forEach(input => {
+            input.addEventListener('input', function() {
+                clampValue(this); // Apply limit on change
+            });
+        });
+    </script>
+</body> <!-- End of body section -->
+</html> <!-- End of HTML document -->
